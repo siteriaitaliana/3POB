@@ -1,4 +1,4 @@
-from lettuce import before, world
+from lettuce import *
 from selenium import webdriver
 import lettuce_webdriver.webdriver
 
@@ -9,4 +9,4 @@ def setup_browser():
 @after.all
 def teardown_browser(total):
   world.browser.quit()
-  print "Ffirefox terminated"
+  print "Firefox terminated"
