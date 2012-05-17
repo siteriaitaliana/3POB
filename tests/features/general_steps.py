@@ -12,7 +12,7 @@ pages = {
     "edit_users_page" : "http://demo.testfire.net/admin/admin.aspx"
 }
 
-@step('I go to "(.*)"')
+@step('I go to "(.*)"$')
 def given_i_go_to(step, page_name):
     url = pages[page_name]
     world.browser.get(url)

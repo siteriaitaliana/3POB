@@ -8,7 +8,7 @@ Feature: Search news
     And I go to "search_news_page"
     When I fill in "_ctl0__ctl0_Content_Main_TextBox1" with "IBM"
     And I press "_ctl0__ctl0_Content_Main_Button1"
-    Then I should not see "News title not found, try again"
-
+    Then I should not see "News title not found, try again" 
+    #this fail cause the functionality is not implemente yet or the article ibm was not found!
 
 
