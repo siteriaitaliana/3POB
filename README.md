@@ -11,4 +11,4 @@
 
 * Usage instructions:
 * Improvement suggestions:
-Swicth the test framework from lettuce to behave, for these reasons http://packages.python.org/behave/comparison.html
+1. Switch the test framework from lettuce to behave, for these reasons http://packages.python.org/behave/comparison.html
