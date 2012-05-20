@@ -1,14 +1,25 @@
 3POB
 ====
 
-3POB - test task
+3POB - Test task
+
 * Installation instructions on MacOsX:
 1. sudo easy_install pip
 2. pip install lettuce
-3. pip install selenium
+3. pip install lettuce_webdriver
+4. pip install selenium
+5. pip install nose
 
-* Technologies used:
+6. git clone git@github.com:siteriaitaliana/3POB.git 3pob
 
-* Usage instructions:
+Finally, to run the tests:
+7. cd 3pob/tests && lettuce  
+
+* How to run the tests:
+
+* Logging, report faciities:
+1. For every failed test a screenshot is taken in the tests/out folder
+2. A complete log file is generated in the tests/out folder
+
 * Improvement suggestions:
 1. Switch the test framework from lettuce to behave, for these reasons http://packages.python.org/behave/comparison.html

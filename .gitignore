@@ -1,3 +1,4 @@
 .idea/*.*
 tests/out
-*.pyc
+tests/*.pyc
+postgresql_test/*.idea
