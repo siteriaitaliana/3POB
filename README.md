@@ -3,7 +3,7 @@
 
 Task #1
 ===
-* Installation instructions on MacOsX:
+* Installation instructions (tested on MacOsX):
 1. sudo easy_install pip
 2. pip install lettuce
 3. pip install lettuce_webdriver
@@ -30,4 +30,11 @@ username: "bamboo83"
 
 Task #3
 ===
+* Usage instructions:
+Detailed instruction on how execute the rake tasks can be found in the tests/Rakefile.rb file.
+
+* For the bug&improvements list look the bug_report.xls file.
+
+
+
 

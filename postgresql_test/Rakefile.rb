@@ -8,11 +8,12 @@ require File.dirname(__FILE__) + '/connect.rb'
 #1. Install Ruby v. >= 1.9.2
 #2. From cli 'bundle install bundler'
 #3. From cli postgresql_test do 'bundle install'
-#4. Prepare the functions to be executed against the db by appending more functions to the following data_fixtures array
 #   (the set of functions to be called are contained in the stored_procedure.rb file)
-#   modify the rows:  GRANT EXECUTE ON FUNCTION function_name()TO username;
-#   with your postgresql db username  #
-#5. 'bundle exec rake'
+#   modify the db access credentials in database.yml and the row:
+#   GRANT EXECUTE ON FUNCTION function_name()TO username;
+#   with your postgresql db username in every stores procedure
+#4. 'bundle exec rake -T' for the full list of the available rake tasks
+#
 # This rake task finally will run all the functions contained in data_fixtures by logging the query status, its execution time
 # and will throw the eventual errors raised by postgresql and its constrains
 #
@@ -32,15 +33,29 @@ task :load_data_fixture do
   third_data_set
 end
 
-desc "Run the specified postgresql query"
-task :exec_query, :arg do |t, args|
-  case args['arg']
-    when "select_customer"
+desc"""
+Run the following postgresql query:
+- select_customer
+- select_address
+- select_orders
+- select_customer_and_address(id_customer)
+- select_customer_orders(key_customer)
+- select_undeliv_ord
+"""
+task :exec_query, :query, :param  do |t, args|
+  case args['query']
+    when 'select_customer'
       @db.execute_query("SELECT * FROM customer")
     when 'select_address'
       @db.execute_query("SELECT * FROM address")
     when 'select_orders'
       @db.execute_query("SELECT * FROM orders")
+    when 'select_customer_and_address'
+      @db.execute_query("SELECT firstname, lastname, email FROM customer WHERE id_customer = #{args['param']} UNION ALL SELECT address_line1, country, city  FROM address WHERE key_customer = #{args['param']} ")
+    when 'select_customer_orders'
+      @db.execute_query("SELECT id_order, key_status, delivered FROM orders WHERE key_customer = #{args['param']}")
+    when 'select_undeliv_ord'
+      @db.execute_query("SELECT id_order, key_status, delivered FROM orders WHERE delivered='TRUE'")
   end
 end
 
