@@ -12,7 +12,6 @@ Feature: Login & security tests
     When I enter "<username>"
     And "<password>"
     Then the error message should be "<validation>"
-
   Examples:
     | username | password | validation                    |
     |          |          |You must enter a valid username|
