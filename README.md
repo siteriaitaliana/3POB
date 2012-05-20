@@ -1,5 +1,6 @@
 3POB
 ====
+
 Task #1
 ===
 * Installation instructions on MacOsX:
@@ -23,9 +24,10 @@ Finally, to run the tests:
 * Improvement suggestions:
 1. Switch the test framework from lettuce to behave, for these reasons http://packages.python.org/behave/comparison.html
 
-== Task #2 ==
+Task #2
+===
 username: "bamboo83"
 
-== Task #3 ==
-
+Task #3
+===
 
