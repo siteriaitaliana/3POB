@@ -47,8 +47,11 @@ def get_screenshot(scenario):
   if scenario.passed == False:
     world.browser.get_screenshot_as_file(world.path + '/' +scenario.name )
     world.log.info("Saved screenshot in '%s'" % (world.path + '/' +scenario.name + '.jpg'))
-    reason = scenarios_and_its_fails[scenario] 
-
+    try: 
+    	reason = scenarios_and_its_fails[scenario]
+    except KeyError:
+        world.log.info('KeyError exception captured.')
+	
 @after.all
 def print_end(total):
     if total.scenarios_passed < total.scenarios_ran:
