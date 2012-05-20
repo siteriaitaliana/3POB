@@ -109,7 +109,7 @@ def deliver_order(order_id, changed_by)
     UPDATE orders
     SET
       key_status = 2 -- DELIVERED
-    ,delivered = true
+      ,delivered = true
     WHERE
       id_order = i_order_id;
     SELECT 200, 'Order status changed from ' || _old_status || ' to DELIVERED. Comment or modified by: ' || COALESCE(i_changed_by::text, '<NULL>')

@@ -1,8 +1,7 @@
 require 'rake'
 require File.dirname(__FILE__) + '/connect.rb'
 
-db = DbSupport.new
-data_fixtures = []
+@db = DbSupport.new
 
 #
 #Usage instructions:
@@ -24,38 +23,60 @@ data_fixtures = []
 # deliver_order(IN i_order_id integer, IN i_changed_by text,  OUT status integer, OUT status_text text)
 #
 
-### customer1, address1, order1, deliver1 set creation!
-data_fixtures << create_customer('lorenzo', 'urbini', 'email@gmail.com', 'password')
-customer1_id = db.execute_query("select id_customer from customer where firstname = 'lorenzo'").first['id_customer']
-data_fixtures << create_address(customer1_id, '46 Palermo Road3', 'NW10 5YP', 'United Kingdom', 'London', 'London')
-address1_id = db.execute_query("select id_address from address where key_customer = #{customer1_id}").first['id_address']
-data_fixtures << create_order(customer1_id, address1_id)
-order1_id = db.execute_query("select id_order from orders where key_customer = #{customer1_id} AND key_address = #{address1_id}").first['id_order']
-data_fixtures << deliver_order(order1_id, 'lorenzo')
-###
-
-
-
 task :default => [:load_data_fixture]
 
 desc "Populate the previously created skype postgresql database"
 task :load_data_fixture do
-  data_fixtures.each do |query|
-    db.execute_function(query)
-  end
+  first_data_set
+  second_data_set
+  third_data_set
 end
 
 desc "Run the specified postgresql query"
 task :exec_query, :arg do |t, args|
   case args['arg']
     when "select_customer"
-      db.execute_query("SELECT * FROM customer")
+      @db.execute_query("SELECT * FROM customer")
     when 'select_address'
-      db.execute_query("SELECT * FROM address")
+      @db.execute_query("SELECT * FROM address")
     when 'select_orders'
-      db.execute_query("SELECT * FROM orders")
+      @db.execute_query("SELECT * FROM orders")
   end
 end
+
+def first_data_set
+  ### customer1, address1, order1, deliver1 set creation!
+  @db.execute_function(create_customer('lorenzo', 'urbini', 'lorenzo@gmail.com', 'password'))
+  customer1_id = @db.execute_query("select id_customer from customer where firstname = 'lorenzo'").sort{|a,b| a[1] <=> b[1]}.last['id_customer']
+  @db.execute_function(create_address(customer1_id, '46 Palermo Road3', 'NW10 5YP', 'United Kingdom', 'London', 'London'))
+  address1_id = @db.execute_query("select id_address from address where key_customer = #{customer1_id}").sort{|a,b| a[1] <=> b[1]}.last['id_address']
+  @db.execute_function(create_order(customer1_id, address1_id))
+  order1_id = @db.execute_query("select id_order from orders where key_customer = #{customer1_id} AND key_address = #{address1_id}").sort{|a,b| a[1] <=> b[1]}.last['id_order']
+  @db.execute_function(deliver_order(order1_id, 'Lorenzo'))
+end
+
+def second_data_set
+  ### customer2, address2, order2, deliver2 set creation!
+  @db.execute_function(create_customer('homer', 'simpson', 'homer.simpson@hotmail.com', 'password'))
+  customer2_id = @db.execute_query("select id_customer from customer where firstname = 'homer'").sort{|a,b| a[1] <=> b[1]}.last['id_customer']
+  @db.execute_function(create_address(customer2_id, '22 Simpson Street', '67800', 'United Sates', 'Utah', 'Springfield'))
+  address2_id = @db.execute_query("select id_address from address where key_customer = #{customer2_id}").sort{|a,b| a[1] <=> b[1]}.last['id_address']
+  @db.execute_function(create_order(customer2_id, address2_id))
+  order2_id = @db.execute_query("select id_order from orders where key_customer = #{customer2_id} AND key_address = #{address2_id}").sort{|a,b| a[1] <=> b[1]}.last['id_order']
+  @db.execute_function(deliver_order(order2_id, 'Homer'))
+end
+
+def third_data_set
+  ### customer3, address3, order3, no delivery set creation!
+  @db.execute_function(create_customer('diego', 'maradona', 'diegomaradone@libero.it', 'passwo83'))
+  customer3_id = @db.execute_query("select id_customer from customer where firstname = 'diego'").sort{|a,b| a[1] <=> b[1]}.last['id_customer']
+  @db.execute_function(create_address(customer3_id, '10 Avenue', 'Cahikos', 'ABC1209', 'Argentina', 'Mendoza', 'Buenos Aires'))
+  address3_id = @db.execute_query("select id_address from address where key_customer = #{customer3_id}").sort{|a,b| a[1] <=> b[1]}.last['id_address']
+  @db.execute_function(create_order(customer3_id, address3_id))
+  ###
+end
+
+
 
 
 

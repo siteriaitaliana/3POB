@@ -21,7 +21,6 @@ class DbSupport
   end
 
   def execute_query(sql_query)
-
     #run sql query
     start_time = Time.now
     begin
