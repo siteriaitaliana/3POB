@@ -1,7 +1,7 @@
 3POB
 ====
 Task #1
-====
+===
 * Installation instructions on MacOsX:
 1. sudo easy_install pip
 2. pip install lettuce
