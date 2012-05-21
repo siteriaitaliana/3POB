@@ -9,7 +9,6 @@ Task #1
 3. pip install lettuce_webdriver
 4. pip install selenium
 5. pip install nose
-
 6. git clone git@github.com:siteriaitaliana/3POB.git 3pob
 
 * How to run the tests:
