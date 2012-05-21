@@ -3,7 +3,7 @@
 
 Task #1
 ===
-* Installation instructions (tested on MacOsX):
+#Installation instructions (tested on MacOsX):
 1. sudo easy_install pip
 2. pip install lettuce
 3. pip install lettuce_webdriver
@@ -11,14 +11,14 @@ Task #1
 5. pip install nose
 6. git clone git@github.com:siteriaitaliana/3POB.git 3pob
 
-* How to run the tests:
+#How to run the tests:
 1. cd 3pob/tests && lettuce
 
-* Logging, report facilities:
+#Logging, report facilities:
 1. For every failed test a screenshot is taken in the tests/out folder
 2. A complete log file is generated in the tests/out folder
 
-* Improvement suggestions:
+#Improvement suggestions:
 1. Switch the test framework from lettuce to behave, for these reasons http://packages.python.org/behave/comparison.html
 
 Task #2
