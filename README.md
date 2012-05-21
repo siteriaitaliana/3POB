@@ -22,8 +22,6 @@ Task #1
 * Improvement suggestions:
 1. Switch the test framework from lettuce to behave, for these reasons http://packages.python.org/behave/comparison.html
 
-* For the bug reports look the bug_report.xls file.
-
 Task #2
 ===
 username: "bamboo83"
@@ -33,7 +31,9 @@ Task #3
 * Usage instructions:
 Detailed instruction on how execute the rake tasks can be found in the tests/Rakefile.rb block comment.
 
-* For the bug&improvements list look the bug_report.xls file.
+Bug & Improvement report
+=== 
+https://docs.google.com/spreadsheet/ccc?key=0An68HjlWm9fedEdqSHhTM0ZZaE9GdlgzdFFoZ0xqZlE
 
 
 
