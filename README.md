@@ -11,14 +11,14 @@ Task #1
 6. git clone git@github.com:siteriaitaliana/3POB.git 3pob
 
 #How to run the tests:
-1. cd 3pob/tests && lettuce
+* cd 3pob/tests && lettuce
 
 #Logging, report facilities:
-1. For every failed test a screenshot is taken in the tests/out folder
-2. A complete log file is generated in the tests/out folder
+* For every failed test a screenshot is taken in the tests/out folder
+* A complete log file is generated in the tests/out folder
 
 #Improvement suggestions:
-1. Switch the test framework from lettuce to behave, for these reasons http://packages.python.org/behave/comparison.html
+* Switch the test framework from lettuce to behave, for these reasons http://packages.python.org/behave/comparison.html
 
 Bugs report
 === 
@@ -26,15 +26,15 @@ https://docs.google.com/spreadsheet/ccc?key=0An68HjlWm9fedEdqSHhTM0ZZaE9GdlgzdFF
 
 Task #2
 ====
-username: "bamboo83"
+* username: "bamboo83"
 
 Task #3
 ====
 #Usage instructions:
-Detailed instruction on how execute the rake tasks can be found in the tests/Rakefile.rb block comment.
+* Detailed instruction on how execute the rake tasks can be found in the tests/Rakefile.rb block comment.
 
 #Improvement suggestions:
-1. Refactor the code by creating the classic activerecord model layout with 3 model classes for each table eventually containing some custom methods.
+* Refactor the code by creating the classic activerecord model layout with 3 model classes for each table eventually containing some custom methods.
 With those classes in place all the active record helper methods can be used on their corresponding AR objects making a lot simpler to query the table in various ways.
 
 Bugs & Improvements report
